@@ -11,6 +11,12 @@ exports.getProducts = async (req,res)=>{
   res.json(products);
 };
 
+exports.getProduct = async (req,res)=>{
+  const product = await Product.findById(req.params.id).populate("category");
+  if(!product) return res.status(404).json("Product not found");
+  res.json(product);
+};
+
 exports.updateProduct = async (req,res)=>{
   const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new:true });
   res.json(updated);

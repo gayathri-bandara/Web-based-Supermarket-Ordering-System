@@ -1,0 +1,61 @@
+import { StyleSheet } from "react-native";
+import { COLORS, SPACING, RADIUS } from "../constants/theme";
+
+export const adminStyles = StyleSheet.create({
+  card: {
+    backgroundColor: COLORS.white,
+    borderRadius: RADIUS.md,
+    padding: SPACING.lg,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    marginBottom: SPACING.lg,
+  },
+  cardTitle: { fontSize: 16, fontWeight: "700", color: COLORS.primary, marginBottom: SPACING.md },
+  input: {
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.sm,
+    padding: SPACING.md,
+    marginBottom: SPACING.sm,
+    fontSize: 14,
+    color: COLORS.text,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    borderRadius: RADIUS.sm,
+    padding: SPACING.md,
+    marginBottom: SPACING.sm,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  rowTitle: { fontSize: 14, fontWeight: "600", color: COLORS.text, flex: 1 },
+  rowMeta: { fontSize: 12, color: COLORS.textMuted, marginTop: 2 },
+  rowActions: { flexDirection: "row", gap: SPACING.md },
+  editText: { color: COLORS.primary, fontWeight: "600", fontSize: 13 },
+  deleteText: { color: COLORS.error, fontWeight: "600", fontSize: 13 },
+  saveBtn: {
+    backgroundColor: COLORS.primary,
+    borderRadius: RADIUS.sm,
+    paddingVertical: 12,
+    alignItems: "center",
+    marginTop: SPACING.sm,
+  },
+  saveBtnText: { color: COLORS.white, fontWeight: "700" },
+  cancelBtn: {
+    paddingVertical: 12,
+    alignItems: "center",
+    marginTop: SPACING.sm,
+  },
+  cancelText: { color: COLORS.textMuted, fontWeight: "600" },
+  statusBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: RADIUS.full,
+    alignSelf: "flex-start",
+    marginTop: 4,
+  },
+  statusText: { color: COLORS.white, fontSize: 11, fontWeight: "600" },
+});
