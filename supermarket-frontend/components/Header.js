@@ -35,9 +35,11 @@ export default function Header({ navigation, currentRoute }) {
     <View style={styles.wrapper}>
       <View style={styles.topBar}>
         <View style={styles.topLeft}>
-          <TouchableOpacity onPress={() => navigate("Management")}>
-            <Text style={styles.topLink}>Store Management</Text>
-          </TouchableOpacity>
+          {user?.role === "admin" && (
+            <TouchableOpacity onPress={() => navigate("Management")}>
+              <Text style={styles.topLink}>Store Management</Text>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity onPress={() => navigate("Tracking")}>
             <Text style={styles.topLink}>Order Tracking</Text>
           </TouchableOpacity>
@@ -102,7 +104,7 @@ export default function Header({ navigation, currentRoute }) {
           <Text style={styles.browseText}>Browse Aisles</Text>
         </TouchableOpacity>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.navLinks}>
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.filter(link => link !== "Management" || user?.role === "admin").map((link) => (
             <TouchableOpacity
               key={link}
               onPress={() => navigate(routeMap[link])}

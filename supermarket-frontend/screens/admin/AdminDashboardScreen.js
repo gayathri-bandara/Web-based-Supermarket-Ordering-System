@@ -6,7 +6,7 @@ import { BRAND, ADMIN_MODULES } from "../../constants/branding";
 import { COLORS, SPACING, RADIUS } from "../../constants/theme";
 
 export default function AdminDashboardScreen({ navigation, route }) {
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
 
   if (!token) {
     return (
@@ -19,6 +19,23 @@ export default function AdminDashboardScreen({ navigation, route }) {
           </Text>
           <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Login")}>
             <Text style={styles.btnText}>SIGN IN</Text>
+          </TouchableOpacity>
+        </View>
+      </Layout>
+    );
+  }
+
+  if (user?.role !== "admin") {
+    return (
+      <Layout navigation={navigation} route={route}>
+        <View style={styles.center}>
+          <Text style={styles.lockIcon}>🛑</Text>
+          <Text style={styles.lockTitle}>Access Denied</Text>
+          <Text style={styles.lockDesc}>
+            You do not have administrator privileges to view this page.
+          </Text>
+          <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Home")}>
+            <Text style={styles.btnText}>BACK TO HOME</Text>
           </TouchableOpacity>
         </View>
       </Layout>
