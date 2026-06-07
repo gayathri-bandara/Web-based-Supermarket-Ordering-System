@@ -111,7 +111,7 @@ export default function CartScreen({ navigation, route }) {
                 />
                 <View style={styles.itemInfo}>
                   <Text style={styles.itemName}>{item.product.name}</Text>
-                  <Text style={styles.itemPrice}>${Number(item.product.price).toFixed(2)}</Text>
+                  <Text style={styles.itemPrice}>{`$${Number(item.product.price).toFixed(2)}`}</Text>
                   <View style={styles.qtyRow}>
                     <TouchableOpacity
                       style={styles.qtyBtn}
@@ -130,7 +130,7 @@ export default function CartScreen({ navigation, route }) {
                 </View>
                 <View style={styles.itemRight}>
                   <Text style={styles.itemTotal}>
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    {`$${(item.product.price * item.quantity).toFixed(2)}`}
                   </Text>
                   <TouchableOpacity onPress={() => removeFromCart(item.product._id)}>
                     <Text style={styles.remove}>Remove</Text>
@@ -152,7 +152,7 @@ export default function CartScreen({ navigation, route }) {
 
               <View style={styles.totalRow}>
                 <Text style={styles.totalLabel}>Order Total</Text>
-                <Text style={styles.totalValue}>${cartTotal.toFixed(2)}</Text>
+                <Text style={styles.totalValue}>{`$${cartTotal.toFixed(2)}`}</Text>
               </View>
 
               <TouchableOpacity

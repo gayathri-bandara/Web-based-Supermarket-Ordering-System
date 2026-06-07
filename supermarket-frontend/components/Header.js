@@ -91,7 +91,7 @@ export default function Header({ navigation, currentRoute }) {
             <Text style={styles.actionIcon}>🛒</Text>
             <Text style={styles.actionLabel}>My Cart</Text>
             <View style={styles.badge}><Text style={styles.badgeText}>{cartCount}</Text></View>
-            <Text style={styles.cartTotal}>${cartTotal.toFixed(2)}</Text>
+            <Text style={styles.cartTotal}>{`$${cartTotal.toFixed(2)}`}</Text>
           </TouchableOpacity>
         </View>
       </View>

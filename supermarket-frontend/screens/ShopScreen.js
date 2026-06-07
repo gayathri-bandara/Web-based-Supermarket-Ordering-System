@@ -6,18 +6,24 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import { COLORS, SPACING, RADIUS } from "../constants/theme";
 import { FALLBACK_PRODUCTS } from "../constants/fallbackData";
+import { CATEGORIES } from "../constants/productCatalog";
 
-const TABS = ["All", "Fruit", "Vegetable", "Dairy", "Pantry", "Frozen"];
+const TABS = ["All", ...CATEGORIES.map((c) => c.name)];
 
 export default function ShopScreen({ navigation, route }) {
   const [products, setProducts] = useState([]);
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState(route?.params?.categoryName || "All");
   const { addToCart } = useContext(CartContext);
   const categoryId = route?.params?.categoryId;
+  const categoryName = route?.params?.categoryName;
 
   useEffect(() => {
     loadProducts();
   }, []);
+
+  useEffect(() => {
+    if (categoryName) setActiveTab(categoryName);
+  }, [categoryName]);
 
   const loadProducts = async () => {
     try {
@@ -29,17 +35,17 @@ export default function ShopScreen({ navigation, route }) {
   };
 
   const filtered = products.filter((p) => {
-    if (categoryId && p.category?._id !== categoryId && p.category !== categoryId) return false;
     if (activeTab === "All") return true;
-    const catName = (p.category?.name || "").toLowerCase();
-    return catName.includes(activeTab.toLowerCase());
+    return (p.category?.name || "") === activeTab;
   });
+
+  const displayTitle = activeTab === "All" ? "All Supermarket Items" : activeTab;
 
   return (
     <Layout navigation={navigation} route={route}>
       <View style={styles.header}>
-        <Text style={styles.title}>Online Supermarket Catalog</Text>
-        <Text style={styles.count}>{filtered.length} supermarket items available</Text>
+        <Text style={styles.title}>{displayTitle}</Text>
+        <Text style={styles.count}>{filtered.length} items in this aisle</Text>
       </View>
 
       <View style={styles.tabs}>

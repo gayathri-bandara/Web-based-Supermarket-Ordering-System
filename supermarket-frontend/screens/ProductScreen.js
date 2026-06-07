@@ -88,8 +88,8 @@ export default function ProductScreen({ route, navigation }) {
           <StarRating rating={product.rating || 5} size={18} />
           <Text style={styles.name}>{product.name}</Text>
           <View style={styles.priceRow}>
-            <Text style={styles.price}>${Number(product.price).toFixed(2)}</Text>
-            <Text style={styles.original}>${Number(originalPrice).toFixed(2)}</Text>
+            <Text style={styles.price}>{`$${Number(product.price).toFixed(2)}`}</Text>
+            <Text style={styles.original}>{`$${Number(originalPrice).toFixed(2)}`}</Text>
           </View>
           <Text style={styles.description}>
             {product.description || "Quality supermarket product available for online ordering and home delivery."}

@@ -209,7 +209,7 @@ export default function AdminProductsScreen({ navigation, route }) {
               <View style={styles.productInfo}>
                 <Text style={styles.productName}>{p.name}</Text>
                 <Text style={styles.productMeta}>
-                  ${p.price} · Stock: {p.stock} {p.isFlashSale ? "· FLASH" : ""}
+                  {`$${p.price} · Stock: ${p.stock}${p.isFlashSale ? " · FLASH" : ""}`}
                 </Text>
               </View>
               <View style={styles.rowActions}>

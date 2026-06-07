@@ -4,7 +4,7 @@ import { COLORS, RADIUS, SPACING } from "../constants/theme";
 import { CATEGORY_ICONS } from "../constants/images";
 
 export default function CategoryCard({ category, productCount, onPress }) {
-  const imageUri = CATEGORY_ICONS[category?.name] || CATEGORY_ICONS["Super Food"];
+  const imageUri = CATEGORY_ICONS[category?.name] || CATEGORY_ICONS["Fresh Fruits"];
 
   return (
     <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.85}>

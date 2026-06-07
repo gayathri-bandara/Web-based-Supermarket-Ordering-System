@@ -70,7 +70,7 @@ export default function OrderManagementScreen({ navigation, route }) {
         <View key={o._id} style={s.row}>
           <View style={{ flex: 1 }}>
             <Text style={s.rowTitle}>Order #{String(o._id).slice(-6).toUpperCase()}</Text>
-            <Text style={s.rowMeta}>{o.items?.length || 0} items · ${Number(o.total || 0).toFixed(2)}</Text>
+            <Text style={s.rowMeta}>{`${o.items?.length || 0} items · $${Number(o.total || 0).toFixed(2)}`}</Text>
             {o.address && <Text style={s.rowMeta}>{o.address}</Text>}
             <View style={[s.statusBadge, { backgroundColor: STATUS_COLORS[o.status] || COLORS.primary }]}>
               <Text style={s.statusText}>{o.status || "Pending"}</Text>

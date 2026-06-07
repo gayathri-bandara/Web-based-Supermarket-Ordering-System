@@ -8,7 +8,7 @@ import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
 import CountdownTimer from "../components/CountdownTimer";
 import { COLORS, SPACING } from "../constants/theme";
-import { FALLBACK_PRODUCTS } from "../constants/fallbackData";
+import { FALLBACK_PRODUCTS, FALLBACK_CATEGORIES } from "../constants/fallbackData";
 
 export default function HomeScreen({ navigation, route }) {
   const [products, setProducts] = useState([]);
@@ -23,27 +23,20 @@ export default function HomeScreen({ navigation, route }) {
     try {
       const [prodRes, catRes] = await Promise.all([getProducts(), getCategories()]);
       setProducts(prodRes.data?.length ? prodRes.data : FALLBACK_PRODUCTS);
-      setCategories(catRes.data?.length ? catRes.data : getDefaultCategories());
+      setCategories(catRes.data?.length ? catRes.data : FALLBACK_CATEGORIES);
     } catch {
       setProducts(FALLBACK_PRODUCTS);
-      setCategories(getDefaultCategories());
+      setCategories(FALLBACK_CATEGORIES);
     }
   };
 
-  const getDefaultCategories = () => [
-    { _id: "d", name: "Desserts" },
-    { _id: "s", name: "Snacks" },
-    { _id: "b", name: "Biscuits" },
-    { _id: "c", name: "Coffee" },
-    { _id: "bk", name: "Bakery" },
-    { _id: "bv", name: "Beverages" },
-    { _id: "f", name: "Frozen Products" },
-    { _id: "vf", name: "Vegetables & Fruits" },
-    { _id: "o", name: "Other Products" },
-  ];
-
-  const countByCategory = (catId) =>
-    products.filter((p) => p.category?._id === catId || p.category === catId).length || Math.floor(Math.random() * 100 + 50);
+  const countByCategory = (catId, catName) =>
+    products.filter(
+      (p) =>
+        p.category?._id === catId ||
+        p.category === catId ||
+        (catName && p.category?.name === catName)
+    ).length;
 
   const flashSaleProducts = products.filter((p) => p.isFlashSale).slice(0, 4);
   const displayFlash = flashSaleProducts.length >= 4 ? flashSaleProducts : products.slice(0, 4).map((p) => ({ ...p, isFlashSale: true }));
@@ -59,8 +52,8 @@ export default function HomeScreen({ navigation, route }) {
             <CategoryCard
               key={cat._id}
               category={cat}
-              productCount={countByCategory(cat._id)}
-              onPress={() => navigation.navigate("Shop", { categoryId: cat._id })}
+              productCount={countByCategory(cat._id, cat.name)}
+              onPress={() => navigation.navigate("Shop", { categoryId: cat._id, categoryName: cat.name })}
             />
           ))}
         </View>

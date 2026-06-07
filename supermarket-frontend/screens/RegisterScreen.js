@@ -57,10 +57,10 @@ export default function RegisterScreen({ navigation }) {
           <View style={styles.logoIcon}>
             <Text style={styles.leaf}>🌿</Text>
           </View>
-          <Text style={styles.brand}>VegShop</Text>
+          <Text style={styles.brand}>{BRAND.name}</Text>
         </View>
         <Text style={styles.title}>Create Account</Text>
-        <Text style={styles.subtitle}>Join VegShop for fresh organic groceries</Text>
+        <Text style={styles.subtitle}>Join {BRAND.name} for online supermarket shopping</Text>
 
         {error ? <Text style={styles.error}>{error}</Text> : null}
 

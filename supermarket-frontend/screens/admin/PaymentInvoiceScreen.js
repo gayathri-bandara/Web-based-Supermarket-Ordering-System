@@ -70,7 +70,7 @@ export default function PaymentInvoiceScreen({ navigation, route }) {
         <View key={p._id} style={s.row}>
           <View style={{ flex: 1 }}>
             <Text style={s.rowTitle}>Invoice: {p.invoiceNo || "—"}</Text>
-            <Text style={s.rowMeta}>Order: {String(p.orderId).slice(-6)} · ${Number(p.amount).toFixed(2)} · {p.method}</Text>
+            <Text style={s.rowMeta}>{`Order: ${String(p.orderId).slice(-6)} · $${Number(p.amount).toFixed(2)} · ${p.method}`}</Text>
             <View style={[s.statusBadge, { backgroundColor: p.status === "Paid" ? "#4caf50" : p.status === "Failed" ? "#e53935" : "#ff9800" }]}>
               <Text style={s.statusText}>{p.status}</Text>
             </View>

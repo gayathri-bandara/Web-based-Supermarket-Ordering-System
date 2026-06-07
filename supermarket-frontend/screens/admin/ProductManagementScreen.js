@@ -91,7 +91,7 @@ export default function ProductManagementScreen({ navigation, route }) {
         <View key={p._id} style={s.row}>
           <View style={{ flex: 1 }}>
             <Text style={s.rowTitle}>{p.name}</Text>
-            <Text style={s.rowMeta}>${p.price} · Stock: {p.stock}{p.isFlashSale ? " · SPECIAL" : ""}</Text>
+            <Text style={s.rowMeta}>{`$${p.price} · Stock: ${p.stock}${p.isFlashSale ? " · SPECIAL" : ""}`}</Text>
           </View>
           <View style={s.rowActions}>
             <TouchableOpacity onPress={() => edit(p)}><Text style={s.editText}>Edit</Text></TouchableOpacity>
