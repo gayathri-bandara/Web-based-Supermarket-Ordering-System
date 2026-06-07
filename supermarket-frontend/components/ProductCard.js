@@ -7,6 +7,7 @@ import StarRating from "./StarRating";
 export default function ProductCard({ product, onPress, onAddToCart, compact }) {
   const originalPrice = product.originalPrice || product.price * 1.2;
   const rating = product.rating || 5;
+  const [imageError, setImageError] = React.useState(false);
 
   return (
     <TouchableOpacity
@@ -15,7 +16,12 @@ export default function ProductCard({ product, onPress, onAddToCart, compact }) 
       activeOpacity={0.9}
     >
       <View style={styles.imageWrap}>
-        <Image source={{ uri: getProductImage(product) }} style={styles.image} resizeMode="cover" />
+        <Image 
+          source={{ uri: imageError ? "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80" : getProductImage(product) }} 
+          style={styles.image} 
+          resizeMode="cover"
+          onError={() => setImageError(true)}
+        />
         {product.isFlashSale && (
           <View style={styles.saleBadge}>
             <Text style={styles.saleText}>SALE</Text>

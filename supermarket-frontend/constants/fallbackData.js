@@ -7,4 +7,5 @@ export const FALLBACK_CATEGORIES = CATEGORIES.map((c) => ({
   aisle: c.aisle,
 }));
 
+// Force rebuild to pick up latest image changes
 export const FALLBACK_PRODUCTS = buildFallbackProducts();

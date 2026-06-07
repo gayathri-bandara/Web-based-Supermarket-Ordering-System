@@ -12,7 +12,7 @@ const CATEGORIES = [
 // [name, description, price, imageUrl]
 const RAW = {
   "Fresh Fruits": [
-    ["Fresh Navel Oranges 1kg", "Sweet vitamin-C rich oranges", 4.99, "https://images.unsplash.com/photo-1547514704-5bbef469c4ad?w=400&q=80"],
+    ["Fresh Navel Oranges 1kg", "Sweet vitamin-C rich oranges", 4.99, "https://share.google/aO4qMEEPqxXI1JC7M/images/1a9b8c9e-5c3d-4f0e-8a1b-2d3f4e5a6b7c?w=400&q=80"],
     ["Organic Strawberries 500g", "Juicy hand-picked berries", 5.49, "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80"],
     ["Red Gala Apples 1kg", "Crisp and sweet apples", 3.99, "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&q=80"],
     ["Ripe Bananas 1kg", "Perfect for smoothies and snacking", 2.49, "https://images.unsplash.com/photo-1571771894821-ce9b6d11d08e?w=400&q=80"],
