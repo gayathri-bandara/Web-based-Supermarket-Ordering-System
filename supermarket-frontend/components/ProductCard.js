@@ -26,8 +26,8 @@ export default function ProductCard({ product, onPress, onAddToCart, compact }) 
         <StarRating rating={rating} size={12} />
         <Text style={styles.name} numberOfLines={2}>{product.name}</Text>
         <View style={styles.priceRow}>
-          <Text style={styles.price}>${Number(product.price).toFixed(2)}</Text>
-          <Text style={styles.original}>${Number(originalPrice).toFixed(2)}</Text>
+          <Text style={styles.price}>Rs.{Number(product.price).toFixed(2)}</Text>
+          <Text style={styles.original}>Rs.{Number(originalPrice).toFixed(2)}</Text>
         </View>
         <TouchableOpacity
           style={styles.addBtn}

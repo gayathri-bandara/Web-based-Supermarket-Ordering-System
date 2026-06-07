@@ -31,12 +31,15 @@ export default function HomeScreen({ navigation, route }) {
   };
 
   const getDefaultCategories = () => [
-    { _id: "1", name: "Fruit & Produce" },
-    { _id: "2", name: "Dairy & Eggs" },
-    { _id: "3", name: "Pantry Staples" },
-    { _id: "4", name: "Beverages" },
-    { _id: "5", name: "Household" },
-    { _id: "6", name: "Frozen Foods" },
+    { _id: "d", name: "Desserts" },
+    { _id: "s", name: "Snacks" },
+    { _id: "b", name: "Biscuits" },
+    { _id: "c", name: "Coffee" },
+    { _id: "bk", name: "Bakery" },
+    { _id: "bv", name: "Beverages" },
+    { _id: "f", name: "Frozen Products" },
+    { _id: "vf", name: "Vegetables & Fruits" },
+    { _id: "o", name: "Other Products" },
   ];
 
   const countByCategory = (catId) =>
@@ -50,9 +53,9 @@ export default function HomeScreen({ navigation, route }) {
       <HeroBanner onShopNow={() => navigation.navigate("Shop")} />
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Supermarket Aisles</Text>
+        <Text style={styles.sectionTitle}>Shop by Category</Text>
         <View style={styles.categoryRow}>
-          {categories.slice(0, 6).map((cat) => (
+          {categories.map((cat) => (
             <CategoryCard
               key={cat._id}
               category={cat}
